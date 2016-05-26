@@ -1,7 +1,7 @@
 //
 //              PROJET SYSTEME 2015-2016 ET3 INFO
 //
-//                      HILARICUS
+//                      HILARICUS-RICHARD
 
 
 #include "Myshell-c.h"
@@ -94,7 +94,7 @@ void cut_Cmd(){
             i++;
         }
         i=traitement;
-        cmd_argv[argc]= malloc(MAX_LENGHT_ARGS * sizeof(char));/*Allocation memoire de l'espace necessaire au stockage des arguments coupés en mémoire*/
+        cmd_argv[argc]= malloc(MAX_LENGHT_ARGS * sizeof(char));/*Allocation memoire de l'espace necessaire au stockage des arguments coup≈Ωs en m≈Ωmoire*/
         while((user_entry[i] != ' ') && (user_entry[i] != '\0')){
             /*Stockage des arguments et de leur position dans cmd_argv*/
             cmd_argv[argc][i-traitement] = user_entry[i];
@@ -108,8 +108,8 @@ void cut_Cmd(){
 
 ///////////////////////////////////////// FONCTION "cut_Path" ////////////////////////////////////////////////
 /* Decoupage du chemin externe en arguments(sous-chemins) et stockage des sous-chemins dans un Tableau de Char
- * Entrée : Chemin externe
- * Sortie : Numero du sous chemin stocké dans TryPath
+ * Entr≈Ωe : Chemin externe
+ * Sortie : Numero du sous chemin stock≈Ω dans TryPath
  */
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int cut_Path(const char* pathEnv)
@@ -117,7 +117,7 @@ int cut_Path(const char* pathEnv)
     int i=0,pathNo=0,traitement=0;
 
     while(i<strlen(pathEnv)){
-        while(pathEnv[i] == ':')/*Traitement du chemin externe recu , suppression des caracteres non souhaités*/
+        while(pathEnv[i] == ':')/*Traitement du chemin externe recu , suppression des caracteres non souhait≈Ωs*/
         {
             i++;
             traitement++;
@@ -191,7 +191,7 @@ void  exec_Cmd(){
 
     }
     
-    /*Analyse du premier argument et execution de la commande souhaitée*/
+    /*Analyse du premier argument et execution de la commande souhait≈Ωe*/
     if(cmd_argv[0] == NULL){/*Absence de saisie de la part de l'utilisateur*/
             printf("PAS DE COMMANDE SAISIE");
             verified=0;
@@ -214,7 +214,7 @@ void  exec_Cmd(){
         goto end;
     } else  if(!strcmp(cmd_argv[0],"cat")){/*Gestion de l'execution de la commande interne "cat"*/
             for (i = 1; i < 512; i++) {
-                cat_Cmd(cmd_argv[i]);/*Tranmission des arguments en ca de concaténation*/
+                cat_Cmd(cmd_argv[i]);/*Tranmission des arguments en ca de concat≈Ωnation*/
             }
         verified=1;
         goto end;
@@ -237,7 +237,7 @@ end:
 
 ////////////////////////////////////// FONCTION "gestion_Path" //////////////////////////////////////////////
 /* Decoupage du chemin externe en arguments(sous-chemins) et stockage des sous-chemins dans un Tableau de Char
- * Entrée : Arguments stockes
+ * Entr≈Ωe : Arguments stockes
  *  Sortie : 0
  */
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -313,7 +313,7 @@ int gestion_Path(char ** cmd_argv){
                         }
                         /*Execution de la commande*/
                         execve(fragPath, cmd_argv,environ);
-                        /*Gestion des pipes - Expérimentation non aboutie*/
+                        /*Gestion des pipes - Exp≈Ωrimentation non aboutie*/
                         if(pipe_Out){
                             dup2(pipe_1[1],STDOUT_FILENO);
                             close(pipe_1[1]);
@@ -357,9 +357,9 @@ end:
 void change_Directory(char** cmd_argv){
 
   if(strcmp(cmd_argv[1],"~") == 0){/*Saisie du caractere ~ pour un retour a la racine*/
-    chdir(homedir); /*Mise a jour du rÈpertoire courant vers la racine*/
+    chdir(homedir); /*Mise a jour du r√©pertoire courant vers la racine*/
     } else {
-    chdir(cmd_argv[1]); /*Mise a jour du repertoire courant vers rÈpertoire desire*/
+    chdir(cmd_argv[1]); /*Mise a jour du repertoire courant vers r√©pertoire desire*/
     }
     /*Mise a jour du repertoire courant au niveau de l'information de l'utilisateur du shell*/
     getcwd(cDirectory, BUFFER_SIZE-1);
@@ -503,14 +503,14 @@ int cp_Cmd(char* original, char* at){
     return 0;
 }
 
-/* meme procédure pour cp_Directory et cp_File */
+/* meme proc≈Ωdure pour cp_Directory et cp_File */
 
 int cp_File(struct stat* source, char* originalPath, char* atPath){
     int origin = open(originalPath, O_RDWR);
     int at = open(atPath,O_RDWR | O_CREAT,source->st_mode);
     int lenght=0;
     char seizure[512];
-    if(at ==-1){ /*Erreur lors de la création du fichier copié*/
+    if(at ==-1){ /*Erreur lors de la cr≈Ωation du fichier copi≈Ω*/
         printf("ERREUR CREATION FICHIER");
     }
     while((lenght = read(origin,seizure,512)) !=0){
@@ -546,7 +546,7 @@ void cp_Directory(struct stat* source, char* originalPath, char* atPath){
         originalPath=originalAlloc;
         oLenght++;
     }
-    if(originDir == NULL){/*Si pas de répertoire d'origine*/
+    if(originDir == NULL){/*Si pas de r≈Ωpertoire d'origine*/
         printf("Impossible d'ouvrir le repertoire");
     }
     
