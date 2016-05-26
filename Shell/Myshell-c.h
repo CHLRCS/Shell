@@ -1,7 +1,7 @@
 //
 //              PROJET SYSTEME 2015-2016 ET3 INFO
 //
-//                             HILARICUS
+//                             HILARICUS-RICHARD
 
 
 #ifndef Myshell_c_h
